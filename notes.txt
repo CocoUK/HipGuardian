@@ -1,0 +1,7 @@
+stage = db.Column(db.String(25), nullable = False)
+    location = db.Column(db.String(25), nullable = False)
+    ACS = db.Column(db.String(1), nullable = False)
+    mortality = db.Column(db.String(1), nullable = False)
+    procedure = db.Column(db.String(25), nullable = False)
+    complication = db.Column(db.String(25), nullable = False)
+    condition = db.Column(db.String(25), nullable = False)
