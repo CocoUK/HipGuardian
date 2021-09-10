@@ -24,6 +24,7 @@ class Patient(db.Model):
     procedure = db.Column(db.String(25))
     complication = db.Column(db.String(25))
     condition = db.Column(db.String(25))
+   
 
 
     def __init__(self, *args, **kwargs):

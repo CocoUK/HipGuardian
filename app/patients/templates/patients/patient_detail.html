@@ -1,12 +1,922 @@
 {% extends 'base.html' %}
 
-{% block title %} 
-    <h2> {{ patient.name }} </h2>
-    <div class="">
-        {{ patient.surname}}       
-    </div> 
 
-    <h1>HELLO FROM peco patient details {{ patient.name }}</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur molestias qui at excepturi! Corrupti officia sit delectus soluta aspernatur aperiam sequi eligendi hic fugiat vitae ea ut, aliquid voluptatum dolorum.</p>
+
+{% block title %}
+<title> Hip Guardian - {{ patient.surname }} </title>
+{% endblock %}
+
+{% block content %}
+<!--First accordion-->
+<div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <button class="accordion-button home_text fw-bold" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                aria-controls="panelsStayOpen-collapseOne">
+                {{ patient.name + " " + patient.surname}}
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+            aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+                <div class="d-flex flex-row-reverse bd-highlight">
+                    <button type="button" class="btn">
+                        <i class="bi bi-pencil-fill"></i>
+                    </button>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Age</th>
+                            <th scope="col">Sex</th>
+                            <th scope="col">Medical History</th>
+                            <th scope="col">Ed Admission</th>
+                            <th scope="col">Scenario</th>
+                            <th scope="col">Investigations</th>
+                            <th scope="col">Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ patient.age }}</td>
+                            <td>{{ patient.sex }}</td>
+                            <td>Hypothyroidism, Osteoporosis and early stage kidney failure (eGFR=49mmol/l).</td>
+                            <td>{{ patient.admission_date }}</td>
+                            <td>fractured leg</td>
+                            <td>Chest and Hip Xray<br>Blood tests</td>
+                            <td>{{ patient.location }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--second accordion-->
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button collapsed home_text fw-bold" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseTwo">
+                Treatment plan
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingTwo">
+            <div class="accordion-body">
+                <div class="d-flex flex-row-reverse bd-highlight">
+                    <button type="button pb-4 mb-4" class="btn">
+                        <i class="bi bi-pencil-fill"></i>
+                        <button type="button" class="btn btn-primary pe-4 me-4">Copy as text</button>
+                        <button type="button" class="btn btn-primary pe-4 me-4">Add treatment</button>
+                    </button>
+                </div>
+                <table class="table mt-3">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" class="home_text">Treatment</th>
+                            <th scope="col" class="home_text">Date</th>
+                            <th scope="col" class="home_text">Complications</th>
+                            <th scope="col" class="home_text">Medications</th>
+                            <th scope="col" class="home_text">Actions</th>
+                            <th scope="col" class="home_text">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>IV Fluids</td>
+                            <td>29/07/2021</td>
+                            <td>-</td>
+                            <td>Fluids</td>
+                            <td>-</td>
+                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                    height="30" height="30"></td>
+
+                        </tr>
+                        <tr>
+                            <td>Pain relief</td>
+                            <td>29/07/2021</td>
+                            <td>-</td>
+                            <td>Painkiller</td>
+                            <td>-</td>
+                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                    height="30" height="30"></td>
+                        </tr>
+                        <tr>
+                            <td>Chest and Hip Xray</td>
+                            <td>29/07/2021</td>
+                            <td>-</td>
+                            <td>Painkiller</td>
+                            <td>-</td>
+                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                    height="30" height="30"></td>
+                        </tr>
+                        <tr>
+                            <td>Blood tests</td>
+                            <td>29/07/2021</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td><img src="{{ url_for('static', filename='ambar.png') }}" alt="yellow" width="30"
+                                    height="30" height="30"></td>
+                        </tr>
+                        <tr>
+                            <td>Urin analysis</td>
+                            <td>29/07/2021</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td><img src="{{ url_for('static', filename='red.png') }}" alt="red" width="30" height="30"
+                                    height="30"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--third accordion-->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                <button class="accordion-button collapsed home_text fw-bold" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseThree">
+                    Treatment details
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingThree">
+                <div class="accordion-body">
+                    <div class="d-flex flex-row-reverse bd-highlight">
+                        <button type="button pb-4 mb-4" class="btn">
+                            <i class="bi bi-pencil-fill"></i>
+                            <button type="button" class="btn btn-primary pe-4 me-4">Copy as text</button>
+                            <button type="button" class="btn btn-primary pe-4 me-4">Add treatment</button>
+                        </button>
+                    </div>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="home_text">Link</th>
+                                <th scope="col" class="home_text">Date</th>
+                                <th scope="col" class="home_text">Category</th>
+                                <th scope="col" class="home_text">Speciality</th>
+                                <th scope="col" class="home_text">Findings</th>
+                                <th scope="col" class="home_text">Notes</th>
+                                <th scope="col" class="home_text">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <tr>
+                                <td><a href="#" class="link-primary">64175158</a></td>
+                                <td>29/07/2021</td>
+                                <td>Xray</td>
+                                <td>Radiology</td>
+                                <td>Fractured left leg</td>
+                                <td>Examined by Dr. Brown</td>
+                                <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                        height="30" height="30">
+                                </td>
+                            </tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--fourth accordion-->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseFive">
+                    <p class="home_text fw-bolder">To do</p>
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingFive">
+                <div class="accordion-body">
+                    <div class="d-flex flex-row-reverse bd-highlight">
+                        <button type="button pb-4 mb-4" class="btn">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                    </div>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="home_text"></th>
+                                <th scope="col" class="home_text">Name</th>
+                                <th scope="col" class="home_text">Details</th>
+                                <th scope="col" class="home_text">Procedure</th>
+                                <th scope="col" class="home_text">Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <tr>
+                                <td><img src="{{ url_for('static', filename='cc.png') }}" alt="cc" width="30"
+                                        height="30" height="30">
+                                <td>Christina Castro</td>
+                                <td>09:15 patient n13 Xray</td>
+                                <td>Xray examination</td>
+                                <td>-</td>
+                            </tr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--fifth accordion-->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseSix">
+                    <p class="home_text fw-bolder">Risk Scores</p>
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingSix">
+                <div class="accordion-body">
+
+                    <!--Grid-->
+                    <div class="row my-3justify-content-around align-items-center">
+                        <div class="col">
+                            <!--accordion Sparra-->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingSPARRA">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseSPARRA" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseSPARRA">
+                                        <p class="home_text fw-bolder">SPARRA</p>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseSPARRA" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingSPARRA">
+                                    <div class="accordion-body">
+                                        <div class="d-flex flex-row-reverse bd-highlight">
+                                            <button type="button pb-4 mb-4" class="btn">
+                                                <i class="bi bi-pencil-fill"></i>
+                                            </button>
+                                        </div>
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Age</td>
+                                                    <td class="fw-bolder">76</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SIMD Quintile</td>
+                                                    <td class="fw-bolder">2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>A&E attendances in the pst 12 months</td>
+                                                    <td class="fw-bolder">5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Day case or elective admissions in the past 3 years
+                                                    </td>
+                                                    <td class="fw-bolder">12</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Emergency admissions in the past 3 years</td>
+                                                    <td class="fw-bolder">6</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Alcohol-related emergency admissions in the past 3
+                                                        years</td>
+                                                    <td class="fw-bolder">1</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--accordion Peony-->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingPEONY">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapsePEONY" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapsePEONY">
+                                        <p class="home_text fw-bolder">PEONY</p>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapsePEONY" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingPEONY">
+                                    <div class="accordion-body">
+                                        <strong>This is the space for PEOPNY risk factor.</strong> It will
+                                        display results from the algorithm to predict emergency hospital
+                                        admissions
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--accordion QAdmission-->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingQAdmission">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseQAdmission" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseQAdmission">
+                                        <p class="home_text fw-bolder">QAdmission</p>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseQAdmission" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingQAdmission">
+                                    <div class="accordion-body">
+                                        <strong>This is the space for QAdmission risk factor.</strong>It
+                                        will display results from a predicting risk of emergency admission
+                                        algorithm.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--accordion ICU Mortality -APACHE II-->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingAPACHE">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseAPACHE" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseAPACHE">
+                                        <p class="home_text fw-bolder">ICU Mortality -APACHE II-</p>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseAPACHE" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingAPACHE">
+                                    <div class="accordion-body">
+                                        <strong>This is the space for ICU Mortality Apache IIrisk
+                                            factor.</strong> Apache II estimates ICU mortality based on a
+                                        number of laboratory values and patient signs taking both acute and
+                                        chronic disease into account
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--accordion NEWS-->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingNEWS">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseNEWS" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseNEWS">
+                                        <p class="home_text fw-bolder">NEWS</p>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseNEWS" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingNEWS">
+                                    <div class="accordion-body">
+                                        <strong>This is the space for NEWS.</strong> Yet another risk factor
+                                        predictor.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end column-->
+
+                        <div class="col">
+                            <!--accordion EWS-->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingEWS">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseEWS" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseEWS">
+                                        <p class="home_text fw-bolder">EWS</p>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseEWS" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingEWS">
+                                    <div class="accordion-body">
+                                        <strong>This is the space for EWS.</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--accordion eFI - Frailty-->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingeFI">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseeFI" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseeFI">
+                                        <p class="home_text fw-bolder">eFI - Frailty</p>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseeFI" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingeFI">
+                                    <div class="accordion-body">
+                                        <strong>This is the space for eFI.</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--accordion ACS - Surgery-->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingACS">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseACS" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseACS">
+                                        <p class="home_text fw-bolder">ACS - Surgery</p>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseACS" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingACS">
+                                    <div class="accordion-body">
+                                        <strong>This is the space for ACS - Surgery.</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--accordion NHFS-->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingNHFS">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseNHFS" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseNHFS">
+                                        <p class="home_text fw-bolder">NHFS</p>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseNHFS" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingNHFS">
+                                    <div class="accordion-body">
+                                        <strong>This is the space for NHFS.</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--accordion POSSUM/P-POSSUM-->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingPOSSUM">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapsePOSSUM" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapsePOSSUM">
+                                        <p class="home_text fw-bolder">POSSUM/P-POSSUM</p>
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapsePOSSUM" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingPOSSUM">
+                                    <div class="accordion-body">
+                                        <strong>This is the space for POSSUM.</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid ends-->
+                </div>
+            </div>
+        </div>
+
+        <!--accordion Risk Factors-->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingRisk">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseRisk" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseRisk">
+                    <p class="home_text fw-bolder">Risk factors</p>
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseRisk" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingRisk">
+                <div class="accordion-body">
+                    <div class="d-flex flex-row-reverse bd-highlight">
+                        <button type="button pb-4 mb-4" class="btn">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                    </div>
+
+                    <!-- Grid-->
+                    <div class="row my-5 justify-content-around ">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Demographics</h5>
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Sex</th>
+                                                <th scope="col">Age</th>
+                                                <th scope="col">Ethnicity</th>
+                                                <th scope="col">Family Size</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>M</td>
+                                                <td>76</td>
+                                                <td>White</td>
+                                                <td>5</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Body</h5>
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Weight</th>
+                                                <th scope="col">Height</th>
+                                                <th scope="col">BMI</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>136.7</td>
+                                                <td>5'66"</td>
+                                                <td class="text-warning fw-bolder">25.6</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Labs & MI/RIS</h5>
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Type</th>
+                                                <th scope="col">Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Labtest description</td>
+                                                <td>02/03/2020</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Labtest description</td>
+                                                <td>02/03/2020</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Labtest description</td>
+                                                <td>02/03/2020</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--row ends-->
+
+                    <!--Second row-->
+                    <div class="row my-5 justify-content-around ">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Observations</h5>
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Pains</th>
+                                                <th scope="col">Frailty</th>
+                                                <th scope="col">Factors</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Pain 1</td>
+                                                <td>Frailty 1</td>
+                                                <td>Factor 1: description</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pain 2</td>
+                                                <td>Frailty 2</td>
+                                                <td>Factor 2: description</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pain 3</td>
+                                                <td>Frailty 3</td>
+                                                <td>Factor 3: description</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Clinical records</h5>
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Main Condition</th>
+                                                <th scope="col">Comorbidities</th>
+                                                <th scope="col">Medicines</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Condition 1</td>
+                                                <td>Comorbidity entry 1</td>
+                                                <td>Medicines entry 1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Condition 2</td>
+                                                <td>Comorbidity entry 2</td>
+                                                <td>Medicines entry 2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Condition 3</td>
+                                                <td>Comorbidity entry 3</td>
+                                                <td>Medicines entry 3</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--2nd row end-->
+
+                    <!--3rd row starts-->
+                    <div class="row my-5 justify-content-around">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Nutrition</h5>
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Nutrition and med factors</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Nutrition and med factors entry 1</td>
+                                            <tr>
+                                                <td>Nutrition and med factors entry 1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nutrition and med factors entry 1</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Mental</h5>
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Mental group factors</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Mental group factors entry 1</td>
+                                            <tr>
+                                                <td>Mental group factors entry 2</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Wellness</h5>
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Nutrition and med factors</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Nutrition and med factors entry 1</td>
+                                            <tr>
+                                                <td>Nutrition and med factors entry 2</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nutrition and med factors entry 3</td>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Social Environmental</h5>
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Connections or loneliness</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Social environmental factors entry 1</td>
+                                            <tr>
+                                                <td>Social environmental factors entry 1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Social environmental factors entry 1</td>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseSeven">
+                    <p class="home_text fw-bolder">Outcomes</p>
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingSeven">
+                <div class="accordion-body">
+                    <div class="d-flex flex-row-reverse bd-highlight">
+                        <button type="button pb-4 mb-4" class="btn">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                    </div>
+
+                    <!--Grid-->
+                    <div class="row my-5 justify-content-around ">
+                        <!-- ED readmission card-->
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">ED Readmission</h5>
+                                    <table class="table">
+
+                                        <tbody>
+                                            <tr>
+                                                <td>30 days</td>
+                                                <td class="text-success fw-bolder">23%</td>
+                                            <tr>
+                                                <td>120 days</td>
+                                                <td class="text-danger fw-bolder">84%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- length of stay card-->
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Length of stay</h5>
+                                    <table class="table">
+
+                                        <tbody>
+                                            <tr>
+                                                <td>7 days</td>
+                                                <td class="text-success fw-bolder">23%</td>
+                                            <tr>
+                                                <td>30 days</td>
+                                                <td class="text-success fw-bolder">54%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transfer destination card-->
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Transfer destination</h5>
+                                    <table class="table">
+
+                                        <tbody>
+                                            <tr>
+                                                <td>7 days</td>
+                                                <td class="text-dark fw-bolder">IP Ward</td>
+                                            <tr>
+                                                <td>30 days</td>
+                                                <td class="text-dark fw-bolder">ICU</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <!--Second row-->
+                    <div class="row my-5 justify-content-around ">
+                        <!-- mortality card-->
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Mortality</h5>
+                                    <table class="table">
+
+                                        <tbody>
+                                            <tr>
+                                                <td>30 days</td>
+                                                <td class="text-success fw-bolder">7%</td>
+                                            <tr>
+                                                <td>1 year</td>
+                                                <td class="text-danger fw-bolder">74%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobility card-->
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Mobility</h5>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>120 days</td>
+                                                <td class="text-success fw-bolder">7%</td>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Discharge destination card-->
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title home_text">Discharge destination</h5>
+                                    <table class="table">
+
+                                        <tbody>
+                                            <tr>
+                                                <td>7 days</td>
+                                                <td class="text-dark fw-bolder">Rehab</td>
+                                            <tr>
+                                                <td>30 days</td>
+                                                <td class="text-dark fw-bolder">Rehab</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
 
 {% endblock %}

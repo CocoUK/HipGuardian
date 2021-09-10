@@ -1,7 +1,99 @@
-stage = db.Column(db.String(25), nullable = False)
+    stage = db.Column(db.String(25), nullable = False)
     location = db.Column(db.String(25), nullable = False)
     ACS = db.Column(db.String(1), nullable = False)
     mortality = db.Column(db.String(1), nullable = False)
     procedure = db.Column(db.String(25), nullable = False)
     complication = db.Column(db.String(25), nullable = False)
     condition = db.Column(db.String(25), nullable = False)
+
+
+
+    from application import db 
+from application.models import HF_patient 
+
+
+db.create_all()
+
+#Populate patient db
+
+entry1 = HF_patient(name="Alasdair", surname="Bowen", sex="M", age="25", stage="Post-op", location ="Rehab Ward", ACS="87", mortality="8",
+                    complication="-", procedure="external fixation of fracture right angle", condition="-")
+entry2 = HF_patient(name="Heather", surname="Loftus", sex="F", age="18", stage="Post-op", location ="Rehab Ward", ACS="83", mortality="9",
+                    complication="Unstable blood sugars", procedure="screw and plate to left radius and ulna", condition="Type 1 Diabetes")
+entry3 = HF_patient(name="Ewan", surname="Duncan", sex="M", age="17", stage="Post-op", location ="Rehab Ward", ACS="80", mortality="12",
+                    complication="-", procedure="screw and plate to fractured right tibia", condition="Asthma")
+entry4 = HF_patient(name="Michelle", surname="Jones", sex="F", age="65", stage="Post-op", location ="Rehab Ward", ACS="76", mortality="11",
+                    complication="-", procedure="internal fixation of femur", condition="Hypothyroidism, osteoporosis, early stage kidney failure (eGFR-49mmol/l")
+entry5 = HF_patient(name="Dacey", surname="Baltimore", sex="F", age="90", stage="Post-op", location ="ICU", ACS="75", mortality="94",
+                    complication="vital signs not responding to treatment (EWS)", procedure="screw and plate to fractured right femur", condition="-")
+entry6 = HF_patient(name="Peter", surname="Brett", sex="M", age="22", stage="Post-op", location ="Rehab Ward", ACS="75", mortality="75",
+                    complication="-", procedure="chest drain right femur and three ribs surgery", condition="-")
+entry7 = HF_patient(name="Mathias", surname="Janson", sex="F", age="32", stage="Post-op", location ="Female Ward", ACS="75", mortality="75",
+                    complication="-", procedure="-", condition="Type 2 diabetes, hypertension")
+entry8 = HF_patient(name="Rupert", surname="Zanetti", sex="M", age="41", stage="Post-op", location ="Male Ward", ACS="62", mortality="62",
+                    complication="-", procedure="-", condition="COPD, type 2 diabetes, hypertension")
+entry9 = HF_patient(name="Gergely", surname="Van der Venne", sex="M", age="66", stage="Post-op", location ="Rehab Ward", ACS="60", mortality="60",
+                    complication="-", procedure="screw and plate to fractured right femur", condition="Angina pectoris")
+entry10 = HF_patient(name="Aniello", surname="Caiazza", sex="M", age="65", stage="Pre-op", location ="ICU", ACS="96", mortality="91",
+                    complication="vital signs not responding to treatment (EWS)", procedure="external fixation of fracture right ankle", condition="Osteoporosis, hypertension")
+entry10 = HF_patient(name="Coco", surname="Palafox", sex="F", age="21", stage="Pre-op", location ="ED", ACS="25", mortality="50",
+                    complication="-", procedure="-", condition="stable")
+
+
+db.session.add( entry1)
+db.session.add( entry2)
+db.session.add( entry3)
+db.session.add( entry4)
+db.session.add( entry5)
+db.session.add( entry6)
+db.session.add( entry7)
+db.session.add( entry8)
+db.session.add( entry9)
+db.session.add( entry10)
+db.session.commit()
+
+entries = HF_patient.query.all()
+ 
+for entry in entries:
+  print(entry.name)
+
+ 
+ 
+
+ patients.html
+
+     <h3 class = home_text >Patients list</h3>
+    {% for patient in patients%}
+    <div class="card mb-4">
+        <div class="card-header">
+          {{ patient.name}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+              <a href="{{ url_for('patients.patient_detail', slug=patient.slug)  }}"> {{ patient.name + " " + patient.surname }}</a>
+          </h5>
+          <p class="card-text">Patient info here</p>
+          <a href="{{ url_for('patients.patient_detail', slug=patient.slug)  }}" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    {% endfor %}
+
+
+    patient_detail.html
+     
+<div class="container-fluid ">
+    <div class="row">
+
+        {% extends 'base.html' %}
+
+        {% block title %} 
+        
+        <h1 class = "ps-5 ms-5 mt-5 pt-5">HELLO FROM peco patient details {{ patient.name }}</h1>
+        <p class = "ps-5 ms-5 mt-5 pt-5" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur molestias qui at excepturi! Corrupti
+            officia sit delectus soluta aspernatur aperiam sequi eligendi hic fugiat vitae ea ut, aliquid voluptatum
+            dolorum.</p>
+
+        {% endblock %}
+    </div>
+</div>
+

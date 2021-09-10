@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class"container">
+<div class="panel-group col-lg-8 col-lg-offset-2" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="default" data-parent="#accordion" href="#collapseDefault">Default</a>
+            </h4>
+        </div>
+        <div id="collapseDefault" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <p>Hello I am the panel body</p>
+                <button class="btn btn-success btn-md pull-right" id="defaultNextBtn">Next</button>
+            </div>
+        </div>
+    </div> <!-- default -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="primary" data-parent="#accordion" href="#collapsePrimary">Primary</a>
+            </h4>
+        </div>
+        <div id="collapsePrimary" class="panel-collapse collapse">
+            <div class="panel-body">
+                <p>Hello I am the panel body</p>
+                <button class="btn btn-warning btn-md pull-left" id="primaryPrevBtn">Prev</button>
+                <button class="btn btn-success btn-md pull-right" id="primaryNextBtn">Next</button>
+            </div>
+        </div>
+    </div> <!-- primary -->
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="success" data-parent="#accordion" href="#collapseSuccess">Success</a>
+            </h4>
+        </div>
+        <div id="collapseSuccess" class="panel-collapse collapse">
+            <div class="panel-body">
+                <p>Hello I am the panel body</p>
+                <button class="btn btn-warning btn-md pull-left" id="successPrevBtn">Prev</button>
+                <button class="btn btn-success btn-md pull-right" id="successNextBtn">Next</button>
+            </div>
+        </div>
+    </div> <!-- success -->
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="info" data-parent="#accordion" href="#collapseInfo">Info</a>
+            </h4>
+        </div>
+        <div id="collapseInfo" class="panel-collapse collapse">
+            <div class="panel-body">
+                <p>Hello I am the panel body</p>
+                <button class="btn btn-warning btn-md pull-left" id="infoPrevBtn">Prev</button>
+                <button class="btn btn-success btn-md pull-right" id="infoNextBtn" >Next</button>
+            </div>
+        </div>
+    </div> <!-- info -->
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a class="danger" data-parent="#accordion" href="#collapseWarning">Warning</a>
+            </h4>
+        </div>
+        <div id="collapseWarning" class="panel-collapse collapse">
+            <div class="panel-body">
+                <p>Hello I am the panel body</p>
+                <button class="btn btn-warning btn-md pull-left" id="warningPrevBtn">Prev</button>
+                <button class="btn btn-success btn-md pull-right" id="warningNextBtn">Next</button>
+            </div>
+        </div>
+    </div> <!-- warning -->
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-parent="accordion" href="#collapseDanger">Danger</a>
+            </h4>
+        </div>
+        <div id="collapseDanger" class="panel=collapse collapse">
+            <div class="panel-body">
+                <p>Hello I am the panel body</p>
+                <button class="btn btn-warning btn-md pull-left" id="dangerPrevBtn">Prev</button>
+                <button class="btn btn-danger btn-md pull-right">Submit</button>
+            </div>
+        </div>
+    </div> <!-- danger -->
+</div> <!-- accordion -->
+</div> <!-- container -->
+</body>
+</html>                            
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+  
+  </body>
+</html>
+
+
+
+<script>
+
+//Default Buttons
+$("#defaultNextBtn").on("click", function() {
+    $("#collapsePrimary").collapse('show');
+    $("#collapseDefault").collapse('hide');
+});
+
+//Primary Buttons
+$("#primaryNextBtn").on("click", function() {
+    $("#collapseSuccess").collapse('show');
+    $("#collapsePrimary").collapse('hide');
+});
+
+$("#primaryPrevBtn").on("click", function() {
+    $("#collapseDefault").collapse('show');
+    $("#collapsePrimary").collapse('hide');
+});
+
+//Success Buttons
+$("#successNextBtn").on("click", function() {
+    $("#collapseInfo").collapse('show');
+    $("#collapseSuccess").collapse('hide');
+});
+
+$("#successPrevBtn").on("click", function() {
+    $("#collapsePrimary").collapse('show');
+    $("#collapseSuccess").collapse('hide');
+});
+
+//Info Buttons
+$("#infoNextBtn").on("click", function() {
+    $("#collapseWarning").collapse('show');
+    $("#collapseInfo").collapse('hide');
+});
+
+$("#infoPrevBtn").on("click", function() {
+    $("#collapseSuccess").collapse('show');
+    $("#collapseInfo").collapse('hide');
+});
+
+//Warning Buttons
+$("#warningNextBtn").on("click", function() {
+    $("#collapseDanger").collapse('show');
+    $("#collapseWarning").collapse('hide');
+});
+
+$("#warningPrevBtn").on("click", function() {
+    $("#collapseInfo").collapse('show');
+    $("#collapseWarning").collapse('hide');
+});
+
+//DangerButtons
+$("#dangerPrevBtn").on("click", function() {
+    $("#collapseWarning").collapse('show');
+    $("#collapseDanger").collapse('hide');
+});
+
+
+</script>
+  
+
+ 
+
+
+<script>
+angular.module('plunker', ['ui.bootstrap']);
+function AccordionDemoCtrl($scope) {
+  $scope.oneAtATime = true;
+
+  $scope.groups = [
+    {
+      title: 'Dynamic Group Header - 1',
+      content: 'Dynamic Group Body - 1'
+    },
+    {
+      title: 'Dynamic Group Header - 2',
+      content: 'Dynamic Group Body - 2'
+    }
+  ];
+
+  $scope.items = ['Item 1', 'Item 2', 'Item 3'];
+
+  $scope.addItem = function() {
+    var newItemNo = $scope.items.length + 1;
+    $scope.items.push('Item ' + newItemNo);
+  };
+
+  $scope.status = {
+    isFirstOpen: true,
+    isFirstDisabled: false
+  };
+}
+
+
+</script>
