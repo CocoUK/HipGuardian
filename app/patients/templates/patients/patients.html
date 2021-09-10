@@ -6,21 +6,51 @@
 {% endblock %}
 
 {% block content %}
-    <h21>Patients</h2>
-    {% for patient in patients%}
-    <div class="card mb-4">
-        <div class="card-header">
-          {{ patient.name}}
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">
-              <a href="{{ url_for('patients.patient_detail', slug=patient.slug)  }}"> {{ patient.name }}</a>
-          </h5>
-          <p class="card-text">Patient info here</p>
-          <a href="{{ url_for('patients.patient_detail', slug=patient.slug)  }}" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    {% endfor %}
+
+
+<div class="card" style="width: 70rem;>
+  <div class="card-body">
+    
+    
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col" class = home_text>Demographics</th>
+            <th scope="col" class = home_text>Stage/Location</th>
+            <th scope="col" class = home_text>Procedure</th>
+            <th scope="col"class = home_text>Complications</th>
+            <th scope="col"class = home_text>Conditions</th>
+            <th scope="col"class = home_text>ACS</th>
+            <th scope="col"class = home_text>Mortality</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for patient in patients%}
+          <tr>
+            <td>{{ patient.name + " " + patient.surname }} <br> {{ patient.sex + " " }}  {{ patient.age }}</td>
+            <td>{{ patient.stage }} <br> {{ patient.location }}</td>
+            <td>{{ patient.procedure }}</td>
+            <td>{{ patient.complication }}</td>
+            <td>{{ patient.condition }}</td>
+            <td>{{ patient.ACS }}</td>
+            <td>{{ patient.mortality }}</td>
+            <td><a href="{{ url_for('patients.patient_detail', slug=patient.slug)  }}"class="btn bi bi-chevron-compact-right fa-lg"
+              style="font-size: 1rem; color: #178DC1;"> </a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+
+
+
+
+   
+  </div>
+</div>
+
+
  
 {% endblock %}
 
