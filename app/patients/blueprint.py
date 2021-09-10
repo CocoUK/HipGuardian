@@ -15,4 +15,4 @@ def patients_list():
 @patients.route('/<slug>')
 def patient_detail(slug):
     patient = Patient.query.filter(Patient.slug==slug).first()
-    return render_template('patient/patient_detail.html', patient = patient)
+    return render_template('patients/patient_detail.html', patient = patient)
