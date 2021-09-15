@@ -10,6 +10,13 @@ def slugify(s):
     return re.sub(pattern, '-', s)
 
 
+patients_treatments = db.Table('patients_treatments', 
+                                db.Column('patient_id', db.Integer, db.ForeignKey ('patient.id')),
+                                db.Column('treatment_id', db.Integer, db.ForeignKey('treatment.id'))
+
+)
+
+
 class Patient(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(25))
@@ -26,6 +33,7 @@ class Patient(db.Model):
     procedure = db.Column(db.String(25))
     complication = db.Column(db.String(25))
     condition = db.Column(db.String(25))
+    treatments = db.relationship('Treatment', secondary=patients_treatments, backref=db.backref('patients'), lazy='dynamic')
    
 
 
@@ -45,15 +53,23 @@ class Patient(db.Model):
 
 class Treatment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    treatment = db.Column(db.String(140))
+    name = db.Column(db.String(140))
+    date = db.Column(db.DateTime, default = datetime.utcnow)
+    complication = db.Column(db.String(140))
+    medication = db.Column(db.String(140))
+    action = db.Column(db.String(140))
+    status = db.Column(db.String(140))
+    note = db.Column(db.String(140))
+
+
     slug = db.Column(db.String(140), unique=True)
 
     def __init__ (self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.slug = slugify(self.treatment)
+        self.slug = slugify(self.name)
 
-    def __rep__(self):
-        return f'<Treatment id: {self.id}, treatment: {self.treatment}>'
+    def __repr__(self):
+        return f'<Treatment id: {self.id}, name: {self.name}>'
 
 
 
