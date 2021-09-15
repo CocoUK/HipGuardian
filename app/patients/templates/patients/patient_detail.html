@@ -79,56 +79,57 @@
                             <th scope="col" class="home_text">Complications</th>
                             <th scope="col" class="home_text">Medications</th>
                             <th scope="col" class="home_text">Actions</th>
-                            <th scope="col" class="home_text">Status</th>
+                            <th scope="col" class="home_text">Status</th>  
+                            <th scope="col" class="home_text">Notes</th>                           
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>IV Fluids</td>
-                            <td>29/07/2021</td>
-                            <td>-</td>
-                            <td>Fluids</td>
-                            <td>-</td>
-                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
-                                    height="30" height="30"></td>
+                        {% for treatment in patient.treatments %}
+                            <tr>
+                                <td>{{treatment.name}}</td>
+                                <td>{{treatment.date}}</td>
+                                <td> {% if treatment.complication %}
+                                        {{treatment.complication}}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                                <td> {% if treatment.medication %}
+                                        {{treatment.medication}}
+                                    {% else %}
+                                        -
+                                    {% endif %} 
+                                </td>
+                                <td> {% if treatment.action %}
+                                        {{treatment.action}}
+                                    {% else %}
+                                        -
+                                    {% endif %} 
+                                </td>
+                                <td>
+                                    {% if treatment.status == "green" %}
+                                        <img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                            height="30" height="30">
+                                    {% elif treatment.status == "ambar"%}
+                                        <img src="{{ url_for('static', filename='ambar.png') }}" alt="green" width="30"
+                                            height="30" height="30">
+                                    {% elif treatment.status == "red"%}
+                                        <img src="{{ url_for('static', filename='red.png') }}" alt="green" width="30"
+                                            height="30" height="30">
+                                    {% endif %}
+                                </td>
+                                <td> {% if treatment.note %}
+                                        {{treatment.note}}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                                <td><a href="{{ url_for('patients.patient_detail', slug=patient.slug)  }}"class="btn bi bi-chevron-compact-right fa-lg"
+                                    style="font-size: 1rem; color: #178DC1;"> </a></td>
 
-                        </tr>
-                        <tr>
-                            <td>Pain relief</td>
-                            <td>29/07/2021</td>
-                            <td>-</td>
-                            <td>Painkiller</td>
-                            <td>-</td>
-                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
-                                    height="30" height="30"></td>
-                        </tr>
-                        <tr>
-                            <td>Chest and Hip Xray</td>
-                            <td>29/07/2021</td>
-                            <td>-</td>
-                            <td>Painkiller</td>
-                            <td>-</td>
-                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
-                                    height="30" height="30"></td>
-                        </tr>
-                        <tr>
-                            <td>Blood tests</td>
-                            <td>29/07/2021</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td><img src="{{ url_for('static', filename='ambar.png') }}" alt="yellow" width="30"
-                                    height="30" height="30"></td>
-                        </tr>
-                        <tr>
-                            <td>Urin analysis</td>
-                            <td>29/07/2021</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td><img src="{{ url_for('static', filename='red.png') }}" alt="red" width="30" height="30"
-                                    height="30"></td>
-                        </tr>
+                            </tr>
+                        {% endfor %}
+ 
                     </tbody>
                 </table>
             </div>

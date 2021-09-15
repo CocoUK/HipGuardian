@@ -8,24 +8,80 @@
 {% block content %}
 
 
-<div class="card">
+<div class="card border border-primary">
   <div class="card-body"> 
 
-    <form class="form-inline my-2 my-lg-0" method="GET">
-      <input type="search" class="form-control mr-sm-2" type="search" placeholder="Search" name="q">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <!-- Search form-->
+
+    <div class="d-flex">
+
+      <h4 class = "home_text me-4 " >Patient list</h4>
+      <form class="form-inline my-2 my-lg-0 ms-3 me-4" method="GET">
+        <input type="search" class="form-control mr-sm-2" type="search" placeholder="Search" name="q">
+        
+      </form>
+          
+        
+        <div class="nav-item dropdown ps-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Location
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" href="#">Emergency Department</a></li>
+            <li><a class="dropdown-item" href="#">Rehab Ward</a></li>
+            <li><a class="dropdown-item" href="#">ICU</a></li>
+            <li><a class="dropdown-item" href="#">Male Ward</a></li>
+            <li><a class="dropdown-item" href="#">Female Ward</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-item dropdown ps-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Stage
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" href="#">Pre-op</a></li>
+            <li><a class="dropdown-item" href="#">Post-op</a></li>            
+          </ul>
+        </div>
+
+        <div class="nav-item dropdown ps-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Functional status
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" href="#">Walking</a></li>
+            <li><a class="dropdown-item" href="#">Not walking</a></li>
+            <li><a class="dropdown-item" href="#">Care needed</a></li>
+            <li><a class="dropdown-item" href="#">No care needed</a></li>
+          </ul>
+        </div>
+
+        <a class="btn btn-primary ms-5" href="#" role="button">Advanced search</a>
+
+    </div>
+
+
+  
+
+    <!--search form ends-->
+
+
+
+
+  <div class="pt-4">
 
       <table class="table table-sm">
         <thead>
           <tr>
-            <th scope="col" class = home_text>Demographics</th>
-            <th scope="col" class = home_text>Stage/Location</th>
-            <th scope="col" class = home_text>Procedure</th>
-            <th scope="col"class = home_text>Complications</th>
-            <th scope="col"class = home_text>Conditions</th>
-            <th scope="col"class = home_text>ACS</th>
-            <th scope="col"class = home_text>Mortality</th>
+            <th scope="col" class = fw-bolder>Demographics</th>
+            <th scope="col" class = fw-bolder>Stage/Location</th>
+            <th scope="col" class = fw-bolder>Procedure</th>
+            <th scope="col"class = fw-bolder>Current issues</th>
+            <th scope="col"class = fw-bolder>Past medical history</th>
+            <th scope="col"class = fw-bolder>Functional status</th>
+            <th scope="col"class = fw-bolder>Notes</th>
+            <th scope="col"class = fw-bolder>ACS</th>
           </tr>
         </thead>
         <tbody>
@@ -36,8 +92,9 @@
             <td>{{ patient.procedure }}</td>
             <td>{{ patient.complication }}</td>
             <td>{{ patient.condition }}</td>
+            <td>  Not walking  </td>
+            <td> - </td>
             <td>{{ patient.ACS }}</td>
-            <td>{{ patient.mortality }}</td>
             <td><a href="{{ url_for('patients.patient_detail', slug=patient.slug)  }}"class="btn bi bi-chevron-compact-right fa-lg"
               style="font-size: 1rem; color: #178DC1;"> </a></td>
           </tr>
@@ -45,7 +102,7 @@
         </tbody>
       </table>
 
-
+    </div>
 
 
 

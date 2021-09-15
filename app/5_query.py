@@ -5,4 +5,6 @@ patient = Patient.query.first()
 
 print (patient)
 
-print(patient.treatments.all())
+print(patient.treatments.first())
+
+ 

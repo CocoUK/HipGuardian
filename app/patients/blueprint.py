@@ -19,7 +19,8 @@ def patients_list():
     q = request.args.get('q')
 
     if q:
-        patients = Patient.query.filter(Patient.name.contains(q) | Patient.surname.contains(q) | Patient.condition.contains(q) | Patient.complication.contains(q) | Patient.procedure.contains(q))
+        patients = Patient.query.filter(Patient.name.contains(q) | Patient.surname.contains(q) | Patient.condition.contains(q) 
+            | Patient.complication.contains(q) | Patient.procedure.contains(q) | Patient.location.contains(q) | Patient.stage.contains(q))
     else:    
         patients = Patient.query.all()
     return render_template('patients/patients.html', patients = patients)
