@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}
+<title> Hip Guardian - Add treatment </title>
+{% endblock %}
+
+{% block content %}
+    <h1>Add treatment</h1>
+    <form action="{{url_for('patients.treatment_create')}}" method= 'POST'>
+        
+        {% for field in form %}
+            <div class="form-group">
+                {{ field.label() }}
+                {{ field }}
+            </div>
+        {% endfor %}
+
+
+    </form>
+{% endblock %}

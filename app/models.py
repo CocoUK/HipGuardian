@@ -1,7 +1,9 @@
 from datetime import datetime
+from enum import unique
 from time import time 
 import re
 from app import db
+
 
 def slugify(s):
     pattern = r'[^\w+]'
@@ -41,7 +43,17 @@ class Patient(db.Model):
         return f'<Patient id: {self.id}, name:{self.name}, surname:{self.surname}, age:{self.age}, sex:{self.sex}, admission_date: {self.admission_date}, ethnicity:{self.ethnicity}, slug:{self.slug}, stage:{self.stage}, location:{self.location}, ACS:{self.ACS}, mortality:{self.mortality}, procedure:{self.procedure}, complication:{self.complication}, condition:{self.condition} >'
 
 
+class Treatment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    treatment = db.Column(db.String(140))
+    slug = db.Column(db.String(140), unique=True)
 
+    def __init__ (self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.slug = slugify(self.treatment)
+
+    def __rep__(self):
+        return f'<Treatment id: {self.id}, treatment: {self.treatment}>'
 
 
 
