@@ -3,20 +3,23 @@
 
 
 {% block title %}
-<title> Hip Guardian - Add treatment </title>
+<title> Add treatment </title>
 {% endblock %}
 
 {% block content %}
-    <h1>Add treatment</h1>
-    <form action="{{url_for('patients.treatment_create')}}" method= 'POST'>
-        
-        {% for field in form %}
-            <div class="form-group">
-                {{ field.label() }}
-                {{ field }}
-            </div>
-        {% endfor %}
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <h1>Add treatment</h1>
+        <form action="{{url_for('patients.treatment_create')}}" method= 'POST'>
+            
+            {% for field in form %}
+                <div class="form-group ">
+                    {{ field.label() }}
+                    {{ field (class = "form-control") }}
+                </div>
+            {% endfor %}
+    
+            <button class="btn btn-primary mt-3">Submit</button>
+        </form>        
+    </div>
 
-
-    </form>
 {% endblock %}

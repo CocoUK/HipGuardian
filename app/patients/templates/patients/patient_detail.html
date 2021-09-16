@@ -64,13 +64,17 @@
         <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
             aria-labelledby="panelsStayOpen-headingTwo">
             <div class="accordion-body">
-                <div class="d-flex flex-row-reverse bd-highlight">
-                    <button type="button pb-4 mb-4" class="btn">
-                        <i class="bi bi-pencil-fill"></i>
-                        <button type="button" class="btn btn-primary pe-4 me-4">Copy as text</button>
-                        <button type="button" class="btn btn-primary pe-4 me-4">Add treatment</button>
-                    </button>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
+
+                    <a href="{{url_for('patients.treatment_create')}}" class="btn btn-primary me-2"> Add treatment</a>
+                    <a href="#" class="btn btn-primary me-4"> Copy as text</a>
+                    <i class="bi bi-pencil-fill "></i>
+
                 </div>
+
+
+
                 <table class="table mt-3">
                     <thead class="thead-dark">
                         <tr>
@@ -87,7 +91,7 @@
                         {% for treatment in patient.treatments %}
                             <tr>
                                 <td>{{treatment.name}}</td>
-                                <td>{{treatment.date}}</td>
+                                <td>{{treatment.date.date()}}</td>
                                 <td> {% if treatment.complication %}
                                         {{treatment.complication}}
                                     {% else %}
