@@ -63,3 +63,20 @@ def patient_detail(slug):
 def location_detail(slug):
     location = Patient.query.filter(Patient.slug--slug).first()
     return render_template('patients/location_detail.html', location = location)
+
+
+@patients.route('<slug>/treatment', methods=['POST', 'GET'])
+def treatment_add(slug):
+    patient = Patient.query.filter(Patient.slug==slug).first()
+
+    if request.method =="POST":
+        form = TreatmentForm(fromdata=request.form, obj=patient)
+        form.populate_obj(patient)
+        db.session.commit()
+        return redirect(url_for('patients.patient_detail', slug=patient.slug))
+    form = TreatmentForm(obj=patient)
+    return render_template('patients/treatment_create.html', patient = patient, form = form)
+
+
+    
+    

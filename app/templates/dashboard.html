@@ -1,0 +1,343 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>  Dashboard   </title>    
+{% endblock %}
+
+{% block content %}
+ 
+<div class="container-lg ">
+    
+    <div class="row">
+        <div class="col-7">
+
+             
+                <div class="card border border-primary ">
+                    <div class="card-body">
+                        <div class="container">
+                            <nav class="navbar navbar-light ">
+                                <form class="d-flex">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                            </nav>   
+                          
+
+                            <div class="row">
+                                <div class="col">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Select speciality</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>                         
+                                </div>
+
+                                <div class="col">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Select status</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+
+                                <div class="col">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Select ward</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>                         
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+
+            <div class="d-flex mt-3 gap-2">
+                <div class="card col-5 border border-primary">
+                    <div class="card-body">
+                        <h4 class="card-title home_text font-weight-bold">Patients</h4>
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <td>Total patients</td>
+                                    <td class="fw-bolder">98</td>
+                                    <td><a href="" class="btn bi bi-chevron-compact-right fa-lg"
+                                            style="font-size: 1rem; color: #178DC1;"> </a></td>
+                                </tr>
+                                <tr>
+                                    <td>Admissions 24h</td>
+                                    <td class="fw-bolder">22</td>
+                                    <td><a href="" class="btn bi bi-chevron-compact-right fa-lg"
+                                            style="font-size: 1rem; color: #178DC1;"> </a></td>
+                                </tr>
+                                <tr>
+                                    <td>Discharge 24h</td>
+                                    <td class="fw-bolder">16</td>
+                                    <td><a href="" class="btn bi bi-chevron-compact-right fa-lg"
+                                            style="font-size: 1rem; color: #178DC1;"> </a></td>
+                                </tr>
+                                <tr>
+                                    <td>Pre Op</td>
+                                    <td class="fw-bolder">2</td>
+                                    <td><a href="" class="btn bi bi-chevron-compact-right fa-lg"
+                                            style="font-size: 1rem; color: #178DC1;"> </a></td>
+                                </tr>
+                                <tr>
+                                    <td>Post Op</td>
+                                    <td class="fw-bolder">5</td>
+                                    <td><a href="" class="btn bi bi-chevron-compact-right fa-lg"
+                                            style="font-size: 1rem; color: #178DC1;"> </a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    
+                        
+
+                    </div>
+                </div>
+                 
+                <div class="card col-7 border border-primary ">
+                    <div class="card-body ">
+
+                        <h4 class="card-title home_text font-weight-bold">Last admissions</h4>
+                        <table class="table table-sm">
+    
+                            <tbody>
+                                {% for entry in entries[0:5] %}
+                                <tr>
+                                <tr>
+                                    <td>{{entry.name +" " + entry.surname}}</td>
+                                    <td>{{entry.sex}}</td>
+                                    <td>{{entry.age }}
+                                    <td>{{entry.location}}</td>
+    
+                                    <td><a href="#" class="btn bi bi-chevron-compact-right fa-lg"
+                                            style="font-size: 1rem; color: #178DC1;"> </a></td>
+                                </tr>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>                
+                    </div>
+                </div>                 
+            </div>
+
+            <div class="card border border-primary mt-3">
+                <div class="card-body">
+                    <h4 class="card-title home_text font-weight-bold">Statistics</h4>
+                    <img src="{{ url_for('static', filename='pretty_graph.png') }}" alt="pretty graph"  height="400" ">
+                </div>
+            </div>
+
+            
+      
+
+     
+
+            
+
+        </div>  <!--end of column-->
+
+
+        <div class="col-5">
+            <div class="card border border-primary">
+                <div class="card-body">
+                    <h4 class="card-title home_text font-weight-bold">Lastest activity</h4>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Test</th>
+                            <th scope="col">Patient</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Notes</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Dr. Mitchel Williamson</td>
+                            <td>XRay</td>                            
+                            <td>E12</td>
+                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                height="30" ></td>
+                            <td><i class="bi bi-check text-success fa-5x"></i></td>
+                            <td><a href="#"class="btn bi bi-chevron-compact-right fa-lg"
+                                style="font-size: 1rem; color: #178DC1;"> </a></td>
+                          </tr>
+
+                          <tr>
+                            <td>Dr. Sam Corner</td>
+                            <td>Blood test</td>                            
+                            <td>E09</td>
+                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                height="30" ></td>
+                            <td><i class="bi bi-check text-success fa-5x"></i></td>
+                            <td><a href="#"class="btn bi bi-chevron-compact-right fa-lg"
+                                style="font-size: 1rem; color: #178DC1;"> </a></td>
+                          </tr>
+
+                          <tr>
+                            <td>Dr. Christina Castro</td>
+                            <td>XRay</td>                            
+                            <td>E10</td>
+                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                height="30" ></td>
+                            <td><span class="text-success fa-6x"><i class="bi bi-check "></i></span></td>
+                            <td><a href="#"class="btn bi bi-chevron-compact-right fa-lg"
+                                style="font-size: 1rem; color: #178DC1;"> </a></td>
+                          </tr>
+
+                          <tr>
+                            <td>Harriet Clark</td>
+                            <td>Medication</td>                            
+                            <td>E05</td>
+                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                height="30" ></td>
+                            <td> </td>
+                            <td><a href="#"class="btn bi bi-chevron-compact-right fa-lg"
+                                style="font-size: 1rem; color: #178DC1;"> </a></td>
+                          </tr>
+
+                          <tr>
+                            <td>Dr Mitchel Williamson</td>
+                            <td>Blood test</td>                            
+                            <td>E06</td>
+                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                height="30" ></td>
+                            <td> </td>
+                            <td><a href="#"class="btn bi bi-chevron-compact-right fa-lg"
+                                style="font-size: 1rem; color: #178DC1;"> </a></td>
+                          </tr>
+
+                          <td>Dr Mitchel Williamson</td>
+                          <td>XRay</td>                            
+                          <td>E06</td>
+                          <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                              height="30" ></td>
+                          <td> </td>
+                          <td><a href="#"class="btn bi bi-chevron-compact-right fa-lg"
+                              style="font-size: 1rem; color: #178DC1;"> </a></td>
+                        </tr>
+
+                        <tr>
+                            <td>Harriet Clark</td>
+                            <td>Medication</td>                            
+                            <td>E05</td>
+                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                height="30" ></td>
+                            <td> </td>
+                            <td><a href="#"class="btn bi bi-chevron-compact-right fa-lg"
+                                style="font-size: 1rem; color: #178DC1;"> </a></td>
+                        </tr>
+
+                        <tr>
+                            <td>Dr. Christina Castro</td>
+                            <td>XRay</td>                            
+                            <td>E10</td>
+                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                height="30" ></td>
+                            <td><i class="bi bi-check text-success fa-5x"></i></td>
+                            <td><a href="#"class="btn bi bi-chevron-compact-right fa-lg"
+                                style="font-size: 1rem; color: #178DC1;"> </a></td>
+                          </tr>
+
+                          <tr>
+                            <td>Harriet Clark</td>
+                            <td>Medication</td>                            
+                            <td>E05</td>
+                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                height="30" ></td>
+                            <td> </td>
+                            <td><a href="#"class="btn bi bi-chevron-compact-right fa-lg"
+                                style="font-size: 1rem; color: #178DC1;"> </a></td>
+                        </tr>
+
+
+                          <tr>
+                            <td>Dr. Christina Castro</td>
+                            <td>XRay</td>                            
+                            <td>E10</td>
+                            <td><img src="{{ url_for('static', filename='green.png') }}" alt="green" width="30"
+                                height="30" ></td>
+                            <td><i class="bi bi-check text-success fa-5x"></i></td>
+                            <td><a href="#"class="btn bi bi-chevron-compact-right fa-lg"
+                                style="font-size: 1rem; color: #178DC1;"> </a></td>
+                          </tr>
+
+                           
+                        </tbody>
+                      </table>
+                    
+
+
+
+
+                </div>
+            </div>
+            <div class="card mt-3 border border-primary">
+                <div class="card-body">
+                    <h4 class="card-title home_text font-weight-bold">To do</h4>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Activity</th>
+                            <th scope="col">Patient</th>                            
+                            <th scope="col">Notes</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Dr. Mitchel Williamson</td>
+                            <td>09:00 <br> Ward Inspection</td>                            
+                            <td>E045</td>                             
+                            <td><i class="bi bi-check text-success fa-5x"></i></td>                            
+                          </tr>
+                          <tr>
+                            <td>Sam Conner</td>
+                            <td>09:00 <br> Blood test</td>                            
+                            <td>E007</td>                             
+                            <td><i class="bi bi-check text-success fa-5x"></i></td>                            
+                          </tr>
+                          <tr>
+                            <td>Christina Castro</td>
+                            <td>09:15 <br> Hip XRay</td>                            
+                            <td>E012</td>                             
+                            <td><i class="bi bi-check text-success fa-5x"></i></td>                            
+                          </tr>
+                          <tr>
+                            <td>Harriet Clark</td>
+                            <td>09:15 <br>ICU Ward Tour</td>                            
+                            <td>E012</td>                             
+                            <td><i class="bi bi-check text-success fa-5x"></i></td>                            
+                          </tr>
+                          <tr>
+                            <td>Sam Conner</td>
+                            <td>09:15 <br> Blood test</td>                            
+                            <td>E022</td>                             
+                            <td> </td>                            
+                          </tr>
+
+                           
+                        </tbody>
+                      </table>
+
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}
